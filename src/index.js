@@ -1,112 +1,52 @@
 import Model from './model.js';
 
 window.onload = function () {
-const createPostContent = `<div id="newPost">
-        <p class="CreateHeader" id="newPostSign">Create Post</p>
-        
-          <select name="Which Community" class="newPostSelect" id="newPostCommunity" required>
-            <option value="" selected>Please Select a Community</option>
-            <option value="Com1" class="newPostOption">Com1</option>
-            <option value="Com2" class="newPostOption">Com2</option>
-            <option value="Com3" class="newPostOption">Com3</option>
-          </select>
-      
-          <p class="newPostInstruct">Title: </p>
-          <input placeholder="Title of the Post" id="newPostTitle" class="newPostInput" type="text" required minlength="1" maxlength="100"></input>
-          
-          <p class="newPostInstruct" id="newPostflairSelect">Flair(optional): </p>
-          <select name="Select a Flair" class="newPostSelect">
-            <option value="" selected>Please select</option>
-            <option value="F1" class="newPostFlairOption">F1</option>
-            <option value="F2" class="newPostFlairOption">F2</option>
-            <option value="F2" class="newPostFlairOption">F3</option>
-          </select>
-          <p>
-              <input placeholder="Enter a Flair" id="newPostFlairEnter" class="newPostInput" type="text" maxlength="30"></input>
-          </p>
-          <p class="newPostInstruct">Body: </p>
-          <p>
-              <textarea placeholder="Start Writing..." id="newPostContent" class="newPostInput" type="text" required minlength="1"></textarea>
-          </p>
-          <p class="newPostInstruct">Username: </p>
-          <p>
-              <input placeholder="Enter Username" id="newPostUsername" class="newPostInput" type="text" required minlength="1"></input>
-      
-          </p>
-            <button type="submit" id="newPostSubmit">Submit Post</button>
-            <a id="cancelNewPost" href="./index.html">Cancle</a>
-            
-      
-      </div>`;
-
-
-const createCommunityContent = `<div id="newCommunity">
-            <form>
-                <div class="CreateHeader">Create a New Community</div>
-                <div class="CreatePostField">Community name (required, max 100 characters)</div>
-                <input placeholder="Name of Community" id="communityName" class="CreatePostInput" type="text" required minlength="1" maxlength="100"></input>
-                <div class="CreatePostField" >Community Description (required, max 500 characters)</div>
-                <textarea placeholder="Describe your community" id="CommuDescriptionInput" class="CreatePostInput" type="text" required minlength="1" maxlength="500"></textarea>
-                <div class="CreatePostField">Creater Username (required max ?? chars??)</div>
-                <input placeholder="Username" id="communitysCreater" class="CreatePostInput" type="text" required minlength="1" maxlength="100"></input>
-            </form>
-            <button id="newCommunitySubmit">Engender Community</button>
-        </div>`;
-
-const createCommentContent = `<div id="newComment">
-        <p class="CreateHeader" id="newPostSign">Add a Comment</p>
-          
-        <form>
-            <p class="newCommentInstruct">Comment: (required, max 500 characters)</p>
-            <input placeholder="" id="" class="newCommentInput" type="text" required minlength="1" maxlength="500"></input>
-            <p class="newCommentInstruct">Username: </p>
-            <input placeholder="" id="" class="newCommentInput" type="text" required minlength="1" maxlength="100"></input>        
-        </form>
-        <button type="submit" id="newCommentSubmit">Post Comment</button>
-        <a id="cancelComment" href="">Cancle</a>
-      </div>`;
-
-const communityPageView = `<div class="midboxHeader">
-            <div class="leftsideHeader">
-                <h2 id="headerLF">Community name</h2>
-                <div id="communityDescription">communityDescription</div>
-                <div id="communityCreatedTime">Created time</div>
-                <div id="communityMemberCount">Members</div>
-            </div>
-            <div class="rightsideHeader">
-                <div>
-                    <button href="#" id="newestSort">Newest</button>
-                    <button href="#" id="oldestSort">Oldest</button>
-                    <button href="#"id="activeSort">Active</button>
-                </div>
-            </div>
-        </div>
-      <hr>
-      <h3 id="postsTotal"></h3>
-        <section class="postContainer">
-            <div id="postTemplate" class="posts postOne">
-                <ul>
-                    <li id="communityName"></li>
-                    <li id="posterName"></li>
-                    <li id="postAge"></li>
-                </ul>
-                <h2 href="#" class="postOne"></h2>
-                    <p class="postOne"></p>
-                <p class="postOne"></p>
-                <div class="postsFooter">
-                    <p class="postOne"></p>
-                    <p class="postOne"></p>
-                </div>
-                <hr>
-            </div>
-        </section>`;
-
-
   // fill me with relevant code
 
 
   //populates communities left side
   const modelObj = new Model;
+
+  const wholemidbox = `<div class="midboxHeader">
+        <div class="leftsideHeader">
+          <h2 id="headerLF">All posts</h2>
+          <div id="postbody"></div>
+        </div>
+        <div class="rightsideHeader">
+          <div id="sortButtons">
+            <button href="#" id="newestSort">Newest</button>
+            <button href="#" id="oldestSort">Oldest</button>
+            <button href="#"id="activeSort">Active</button>
+          </div>
+        </div>
+      </div>
+      <div id="hrbelowMidBox"><hr></div>
+      <h3 id="postsTotal"></h3>
+      <section class="postContainer" id="postContainer">
+        <div id="postTemplate" class="posts postOne">
+          <ul id="postBasicInfo">
+            <li id="communityName"></li>
+            <li id="posterName"></li>
+            <li id="postAge"></li>
+          </ul>
+          <h2 href="#" class="postOne"></h2>
+          <p class="postOne"></p>
+          <p class="postOne"></p>
+          <div class="postsFooter">
+            <p class="postOne"></p>
+            <p class="postOne"></p>
+          </div>
+          <hr>
+        </div>
+      </section>`;
+
+
+  //----------------------------  grabs any newly created arrays from session storage to populate
+  const storedCommunities = sessionStorage.getItem("communities");
+  if (storedCommunities) {
+    modelObj.data.communities = JSON.parse(storedCommunities);
+  }
+
 
   //            Methods used to populate index.html main page
 
@@ -118,11 +58,15 @@ const communityPageView = `<div class="midboxHeader">
   const linkFlairArray = modelObj.data.linkFlairs;
   document.getElementById("postsTotal").textContent = postsArray.length + " Posts"
 
+
   communitiesArray.forEach(function (current) {
     const newItem = document.createElement('li');
     newItem.textContent = current.name;
     communitesList.appendChild(newItem).classList.add("communitesElement");
   });
+
+
+
 
   function createPost(postData) {
     const template = document.getElementById("postTemplate");
@@ -182,7 +126,7 @@ const communityPageView = `<div class="midboxHeader">
     const postClone = template.cloneNode(true);
 
 
-    //postClone.querySelector("#communityName").textContent = findCommunity(postData.postID) + " | ";
+    postClone.querySelector("#communityName").style.display = "none";
     postClone.querySelector("#posterName").textContent = postData.postedBy + " | ";
     postClone.querySelector("#postAge").textContent = formatTimeStamp(postData.postedDate);
     postClone.querySelector("h2").textContent = postData.title;
@@ -199,6 +143,47 @@ const communityPageView = `<div class="midboxHeader">
 
   }
 
+  function createPostFull(postData) {
+    const template = document.getElementById("postTemplate");
+
+
+    const postClone = template.cloneNode(true);
+
+
+    postClone.querySelector("#communityName").textContent = findCommunity(postData.postID) + " | ";
+    postClone.querySelector("#posterName").textContent = postData.postedBy + " | ";
+    postClone.querySelector("#postAge").textContent = formatTimeStamp(postData.postedDate);
+    postClone.querySelector("h2").textContent = postData.title;
+    postClone.querySelectorAll("p")[0].textContent = findLinkFlair(postData.linkFlair);
+    postClone.querySelectorAll("p")[1].textContent = postData.content;
+    postClone.querySelector(".postsFooter p:nth-child(1)").textContent = "Views: " + postData.views;
+    postClone.querySelector(".postsFooter p:nth-child(2)").textContent = "Comments: " + postData.commentIDs.length;
+    postClone.removeAttribute('id');
+    postClone.style.display = "block"
+    postClone.classList.add("visiblePost");
+    // Append the new post to the posts container
+
+    //document.querySelector(".postContainer").appendChild(postClone);
+
+    document.querySelectorAll(".leftsideHeader p").forEach(el => {
+      el.style.display = "none";
+    });
+
+    document.getElementById("postbody").innerHTML = postClone.innerHTML;
+    document.getElementById("headerLF").innerHTML = "";
+    document.getElementById("postsTotal").innerHTML = "";
+    document.getElementById("hrbelowMidBox").innerHTML = ``;
+    document.getElementById("postContainer").style.display = "none";
+    document.getElementById("sortButtons").style.display = "none";
+
+
+
+    //document.querySelector(".postContainer").innerHTML = "";
+
+  }
+
+  //DO NOT TOUCH, REMOVES POSTTEMPLATE FROM DOM
+  newestButtonFunction();
   //DO NOT TOUCH, REMOVES POSTTEMPLATE FROM DOM
   newestButtonFunction();
 
@@ -240,7 +225,7 @@ const communityPageView = `<div class="midboxHeader">
   //function to create timestamps
   function formatTimeStamp(timestamp) {
     const today = new Date();
-    const postDate = timestamp;
+    const postDate = new Date(timestamp);
 
     const seconds = Math.floor((today - postDate) / 1000);  // Difference in seconds
     const minutes = Math.floor(seconds / 60);  // Convert seconds to minutes
@@ -288,7 +273,6 @@ const communityPageView = `<div class="midboxHeader">
 
   // function to add community description to community page
   function addDescription(name) {
-
     const communityDescrip = document.createElement('p')
     const communityTimeStamp = document.createElement('p')
     const communityPostTotal = document.createElement('p')
@@ -339,24 +323,87 @@ const communityPageView = `<div class="midboxHeader">
 
   }
 
+  
 
-  //creates click event on the comunities name. when clicked takes you to community page
+  // creates click event on the comunities name. when clicked takes you to community page
   const commItems = document.querySelectorAll(".communitesElement");
   commItems.forEach(item => {
     item.addEventListener('click', function (event) {
+      document.getElementById("midbox").innerHTML = wholemidbox;
       var communityName = event.target.innerHTML;
+      document.getElementById("postbody").innerHTML = "";
+      document.getElementById("hrbelowMidBox").innerHTML = `<hr>`;
+      document.getElementById("postContainer").style.display = "block";
       document.getElementById("headerLF").innerHTML = communityName;
+      document.getElementById("sortButtons").style.display = "block";
+
       addDescription(communityName);
       addcommunityPosts(communityName);
     })
   })
 
+  // Function to attach click listeners to community items
+function attachCommunityClickListeners() {
+  const commItems = document.querySelectorAll(".communitesElement");
+  commItems.forEach(item => {
+    item.addEventListener('click', function (event) {
+      // Update the midbox with the community page template
+      document.getElementById("midbox").innerHTML = wholemidbox;
+      const communityName = event.target.innerHTML;
+      document.getElementById("postbody").innerHTML = "";
+      document.getElementById("hrbelowMidBox").innerHTML = `<hr>`;
+      document.getElementById("postContainer").style.display = "block";
+      document.getElementById("headerLF").innerHTML = communityName;
+      document.getElementById("sortButtons").style.display = "block";
+
+      addDescription(communityName);
+      addcommunityPosts(communityName);
+    });
+  });
+}
 
 
-  //
+
+  //when click on a title at home, take you to the post
+  function showPost(postName) {
+    postsArray.forEach(postData => {
+      if (postData.title == postName) {
+        console.log(postData);
+        createPostFull(postData);
+      }
+    })
+  }
+
+  //when click on a post title at home, takes you to the post view page
+  const postItemsHome = document.querySelectorAll("h2");
+  postItemsHome.forEach(item => {
+    item.addEventListener('click', function (event) {
+      var postName = event.target.innerHTML;
+      //console.log(postName);
+      console.log("clicked, will go to post view");
+      //document.getElementById("sortButtons").remove();
+      showPost(postName);
+    })
+  })
+
+
+  //when click on a post title at community page, takes you to the post view page
+  const postItemsCommunity = Array.from(document.querySelectorAll(".postContainer"));
+
+  // const postItemsCommunity = document.querySelector(".postContainer .visiblePost").querySelectorAll("h2");
+
+  postItemsCommunity.forEach(item => {
+    item.addEventListener('click', function (event) {
+      var postName = event.target.innerHTML;
+      console.log("go to post from commu" + postItemsCommunity);
+      //document.getElementById("sortButtons").remove();
+      showPost(postName);
+    })
+  })
 
   // window.M = new Model(); // CMK added this for testing, feel free to remove/replace
   // console.log(M); // CMK added this for testing, feel free to remove/replace
+
 
   //creeate post button
   document.getElementById("createPost").addEventListener('click', function (event) {
@@ -416,6 +463,13 @@ const communityPageView = `<div class="midboxHeader">
     return modelObj.data.communities.find(community => community.communityID === communityID);
 
   }
+
+  function postViewPage() {
+
+  }
+
+
+
   // ---------------------------------- section for the search function  ----------------------------------
 
   document.getElementById("search").addEventListener('click', getSearchResults);
@@ -460,23 +514,156 @@ const communityPageView = `<div class="midboxHeader">
 
     newestButtonFunction()
   }
-
   // ---------------------------------- section for adding a new community to communityArray  ----------------------------------
+  window.addCommunityToCommunityArray = addCommunityToCommunityArray;
 
-    document.getElementById("newCommunitySubmit").addEventListener('click', addCommunityToCommunityArray);
-    function addCommunityToCommunityArray() {
-      console.clear()
-      console.log(document.getElementById("communityName").value);
-      console.log(document.getElementById("CommuDescriptionInput").value);
-      console.log(document.getElementById("communitysCreater").value);
-    }
+  function addCommunityToCommunityArray() {
+    const name = document.getElementById("communityName").value;
+    const description = document.getElementById("CommuDescriptionInput").value;
+    const communitiesCreater = document.getElementById("communitysCreater").value;
+    const communityID = "community" + communitiesArray.length;
+    const postIDs = [];
+    const startDate = new Date();
+    const members = [communitiesCreater];
+    const memberCount = members.length;
+
+    const newCommunity = {
+      communityID: communityID,
+      name: name,
+      description: description,
+      postIDs: postIDs,
+      startDate: startDate,
+      members: members,
+      memberCount: memberCount
+    };
+    //how to make this permenent so that when the page is refreshed or changes to a new page, the appended element remaines in modelObj.data.communities
+    modelObj.data.communities.push(newCommunity);
+
+    sessionStorage.setItem("communities", JSON.stringify(modelObj.data.communities));
 
 
+    const communitesList = document.getElementById("communitiesList");
+
+    communitesList.innerHTML = "";
+
+    modelObj.data.communities.forEach(function (current) {
+      const newItem = document.createElement('li');
+      newItem.textContent = current.name;
+      newItem.classList.add("communitesElement");
+      communitesList.appendChild(newItem);
+    });
+    attachCommunityClickListeners();
+
+  }
 
 };
+const searchButton = document.getElementById("searchbar");
+searchButton.addEventListener("keyup", function (event) {
+  if (event.key == "Enter") {
+    document.getElementById("search").click();
+  }
+})
 
 
+const createPostContent = `<div id="newPost">
+        <p class="CreateHeader" id="newPostSign">Create Post</p>
+        
+          <select name="Which Community" class="newPostSelect" id="newPostCommunity" required>
+            <option value="" selected>Please Select a Community</option>
+            <option value="Com1" class="newPostOption">Com1</option>
+            <option value="Com2" class="newPostOption">Com2</option>
+            <option value="Com3" class="newPostOption">Com3</option>
+          </select>
+      
+          <p class="newPostInstruct">Title: </p>
+          <input placeholder="Title of the Post" id="newPostTitle" class="newPostInput" type="text" required minlength="1" maxlength="100"></input>
+          
+          <p class="newPostInstruct" id="newPostflairSelect">Flair(optional): </p>
+          <select name="Select a Flair" class="newPostSelect">
+            <option value="" selected>Please select</option>
+            <option value="F1" class="newPostFlairOption">F1</option>
+            <option value="F2" class="newPostFlairOption">F2</option>
+            <option value="F2" class="newPostFlairOption">F3</option>
+          </select>
+          <p>
+              <input placeholder="Enter a Flair" id="newPostFlairEnter" class="newPostInput" type="text" maxlength="30"></input>
+          </p>
+          <p class="newPostInstruct">Body: </p>
+          <p>
+              <textarea placeholder="Start Writing..." id="newPostContent" class="newPostInput" type="text" required minlength="1"></textarea>
+          </p>
+          <p class="newPostInstruct">Username: </p>
+          <p>
+              <input placeholder="Enter Username" id="newPostUsername" class="newPostInput" type="text" required minlength="1"></input>
+      
+          </p>
+            <button type="submit" id="newPostSubmit">Submit Post</button>
+            <a id="cancelNewPost" href="./index.html">Cancle</a>
+            
+      
+      </div>`;
 
 
+const createCommunityContent = `<div id="newCommunity">
+            <form>
+                <div class="CreateHeader">Create a New Community</div>
+                <div class="CreatePostField">Community name (required, max 100 characters)</div>
+                <input placeholder="Name of Community" id="communityName" class="CreatePostInput" type="text" required minlength="1" maxlength="100"></input>
+                <div class="CreatePostField" >Community Description (required, max 500 characters)</div>
+                <textarea placeholder="Describe your community" id="CommuDescriptionInput" class="CreatePostInput" type="text" required minlength="1" maxlength="500"></textarea>
+                <div class="CreatePostField">Creater Username (required max ?? chars??)</div>
+                <input placeholder="Username" id="communitysCreater" class="CreatePostInput" type="text" required minlength="1" maxlength="100"></input>
+            </form>
+            <button id="newCommunitySubmit" onclick="addCommunityToCommunityArray()">Engender Community</button>
+        </div>`;
 
+const createCommentContent = `<div id="newComment">
+        <p class="CreateHeader" id="newPostSign">Add a Comment</p>
+          
+        <form>
+            <p class="newCommentInstruct">Comment: (required, max 500 characters)</p>
+            <input placeholder="" id="" class="newCommentInput" type="text" required minlength="1" maxlength="500"></input>
+            <p class="newCommentInstruct">Username: </p>
+            <input placeholder="" id="" class="newCommentInput" type="text" required minlength="1" maxlength="100"></input>        
+        </form>
+        <button type="submit" id="newCommentSubmit">Post Comment</button>
+        <a id="cancelComment" href="">Cancle</a>
+      </div>`;
 
+const communityPageView = `<div class="midboxHeader">
+            <div class="leftsideHeader">
+                <h2 id="headerLF">Community name</h2>
+                <div id="communityDescription">communityDescription</div>
+                <div id="communityCreatedTime">Created time</div>
+                <div id="communityMemberCount">Members</div>
+            </div>
+            <div class="rightsideHeader">
+                <div>
+                    <button href="#" id="newestSort">Newest</button>
+                    <button href="#" id="oldestSort">Oldest</button>
+                    <button href="#"id="activeSort">Active</button>
+                </div>
+            </div>
+        </div>
+      <hr>
+      <h3 id="postsTotal"></h3>
+        <section class="postContainer">
+            <div id="postTemplate" class="posts postOne">
+                <ul>
+                    <li id="communityName"></li>
+                    <li id="posterName"></li>
+                    <li id="postAge"></li>
+                </ul>
+                <h2 href="#" class="postOne"></h2>
+                    <p class="postOne"></p>
+                <p class="postOne"></p>
+                <div class="postsFooter">
+                    <p class="postOne"></p>
+                    <p class="postOne"></p>
+                </div>
+                <hr>
+            </div>
+        </section>`;
+const postViewPContent = `<div id="postbody"></div>
+        <hr>
+        <div id="comment"></div>`;

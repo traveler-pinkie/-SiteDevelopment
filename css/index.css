@@ -1,16 +1,31 @@
+
 /* Add CSS stylesheet */
-.header {
-    /* These are just the default CSS properties for h1 header tags */
+.header { /* These are just the default CSS properties for h1 header tags */
     font-size: 2em;
+    padding-top: 10px;
     margin-top: 0;
-    margin-bottom: 0.67em;
-    margin-left: 0;
+    margin-bottom: 0.33em;
+    margin-left: 10px;
     margin-right: 0;
     font-weight: bold;
     background-color: white;
     text-align: left;
     display: flex;
     height: 5%;
+}
+
+body{
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    font-family: 'Verdana', sans-serif;
+}
+
+#postBasicInfo {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
 }
 
 #navbar {
@@ -25,17 +40,19 @@
     text-align: center;
 }
 
-#main {
+#main{
     background-color: bisque;
 }
 
 
 
 
-.headeritem {
+.headeritem{
+    border-radius: 20px;
     flex: 1;
     background-color: lightgray;
     width: auto;
+    padding: 5px 5px;
     margin-top: 3px;
     margin-bottom: 3px;
     margin-left: 10px;
@@ -43,27 +60,30 @@
     color: black;
     text-align: center;
     font-size: 16px;
-
+    text-decoration: none;
+    
 }
 
-.headeritem:hover {
+.headeritem:hover{
     background-color: orangered;
-    color: white
+    color:white
 }
 
-#home {
+
+
+#home{
     flex: 1;
     width: auto;
     margin-top: 3px;
     margin-bottom: 3px;
-    margin-left: 10px;
     margin-right: 10px;
     color: orangered;
     text-align: center;
     font-size: 24px;
+    text-decoration: none;
 }
 
-#searchbar {
+#searchbar{
     flex: 4;
     border-radius: 30px;
     text-align: center;
@@ -73,12 +93,12 @@
 
 }
 
-#searchbar:hover {
+#searchbar:hover{
     background-color: antiquewhite;
-
+    
 }
 
-#search {
+#search{
     background-color: white;
     border-radius: 30px;
     margin-right: 15%;
@@ -87,61 +107,97 @@
     color: black;
 }
 
-#search:hover {
+#search:hover{
     background-color: antiquewhite;
 }
 
-#flex_wrapper {
+#flex_wrapper{
     display: flex;
-    background-color: darkgray;
-    height: 80%;
+    height: auto;
 }
 
-#flex_wrapper>div {
+#flex_wrapper > div{
     text-align: center;
 }
 
-#leftbox {
+#leftbox{
     background-color: white;
     margin-right: 3px;
+    border-right: 1px solid black;
+
     flex: 1;
 }
 
-.leftboxitem {
+#newCommunityButton{
+    text-decoration: none;
+    border-radius: 20px;
     background-color: lightgray;
     width: 250px;
-    margin-top: 3px;
-    margin-bottom: 5px;
     margin-left: 10px;
     margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
+    font-size: 16pt;
+    text-decoration: none;
+}
+
+#leftboxContainer{
+    text-decoration: none;
+}
+#lefthome{
+    border-radius: 20px;
+    background-color: lightgray;
+    width: 250px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     color: black;
     text-align: center;
     font-size: 16pt;
 }
 
-.leftboxitem:hover {
+#lefthome:hover{
     background-color: orangered;
-    color: black;
+    color:white;
 }
 
-#currentcommu {
+#newCommunityButton:hover{
+    background-color: orangered;
+    color:white;
+    text-decoration: none;
+}
+
+
+
+#currentCommuTag{
+    font-weight: bold;
+    background-color: none;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+#Communities{
     text-align: left;
     margin: 20px 0 0 0;
     padding-left: 5%;
-    font-weight: bold;
+    font-weight: bold; 
     font-size: 150%;
 }
 
-#leftbox ul {
+#leftbox ul{
     text-align: left;
 }
 
-#leftbox ul li {
+#leftbox ul li{
     list-style: none;
     margin-bottom: 15px;
 }
 
-#midbox {
+#midbox{
     background-color: white;
     margin-right: 3px;
     margin-left: 3px;
@@ -149,83 +205,299 @@
 }
 
 
-.midboxHeader {
-    text-align: left;
+.midboxHeader{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 78%;
+    text-align: left;
     margin: 0;
 }
 
-.rightsideHeader button:hover {
-    background-color: orangered;
-    color: white;
-}
-
-.midboxHeader h2 {
+.midboxHeader h2{
     margin: 0%;
     color: orangered;
 
 }
 
-#midbox h3 {
+.leftsideHeader{
+    flex: 5;
+}
+
+.rightsideHeader{
+    flex: 1;
+}
+
+.leftsideHeader div{
+    font-size: 16px;
+}
+
+#communityDescription{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.rightsideHeader button{
+    height: 30px;
+    width: 90px;
+    border-radius: 20px;
+    width: auto;
+}
+
+.rightsideHeader button:hover{
+    background-color: orangered;
+    color:white;
+}
+
+
+
+#midbox h3{
     text-align: left;
     margin-left: 1%;
 }
 
-.postContainer {
+.postContainer{
     text-align: left;
     margin-left: 3%;
     padding: 0;
 }
 
-.postContainer hr {
+.postContainer hr{
     margin-bottom: 30px;
-    border: none;
-    border-top: 2px dotted black;
-
 }
 
-.postContainer .posts .postOne {
+.postContainer .posts .postOne{
     margin: 0;
     padding-bottom: 0.5%;
 }
 
-.postContainer .posts h2 {
-    color: orangered
+.postContainer .posts h2{
+    color:orangered
 }
 
-.postContainer .posts ul {
+.postContainer .posts ul{
     padding: 0;
     margin: 0;
 }
 
-.postContainer .posts ul li {
+.postContainer .posts ul li{
     display: inline-block;
 }
 
-.postContainer .posts .postTwo {
+.postContainer .posts .postTwo{
     margin: 0;
     padding-bottom: 0.5%;
 }
 
-.postsFooter {
-    display: flex;
+.postsFooter{
+    display: fi;
     justify-content: left;
     column-gap: 2%;
 }
 
-.rightboxitem:hover {
+.rightboxitem:hover{
     background-color: antiquewhite;
-    color: black;
+    color:black;
 }
 
-.footer {
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    position: fixed;
+.CreateHeader{
+    flex: 1;
+    width: auto;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    color: orangered;
+    text-align: left;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+#newPost{
+    text-align: left;
+    margin-left: 5%;
+    flex: 5;
+}
+
+
+
+.newPostSelect{
+    border-radius: 20px;
+    margin-left: 10px;
+    padding-right: 10px;
+    padding-left: 5px;
+    height: 30px;
+    width: auto;
+    background-color: lightgray;
+    font-size: 16px;
+}
+
+.newPostSelect:hover {
+    border-color: orangered;
+    background-color: rgb(255, 207, 189);
+    border-width: 2px;
+}
+.newPostSelect:focus {
+    border-color: orangered;
+    background-color: rgb(255, 207, 189);
+    border-width: 2px;
+}
+
+.newPostInput{
+    width: 600px;
+    border-radius: 10px;
+    border-color: black;
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 30px;
+    text-align: left;
+    font-size: 18px;
+    vertical-align: top; 
+    resize: vertical;
+}
+
+
+
+.newPostInput:hover{
+    border-color: orangered;
+    background-color: rgb(255, 207, 189);
+    border-width: 2px;
+}
+
+.newPostInput:focus{
+    border-color: orangered;
+    background-color: rgb(255, 207, 189);
+    border-width: 2px;
+}
+
+#newPostContent{
+    height: 100px;
+}
+
+.newPostInput{
+    margin-left: 10px;
+}
+
+#newPostSubmit{
+    border-radius: 10px;
+    background-color: orange;
+    font-size: 18px;
+    padding: 3px 10px 3px 10px;
+    margin-left: 10px;
+}
+
+
+#cancelNewPost{
+    border-radius: 20px;
+    background-color: lightgray;
+    font-size: 18px;
+    padding: 3px 10px 3px 10px;
+    margin-left: 100px;
+    text-decoration: none;
+    height: 35px;
+}
+
+#cancelNewPost:hover{
+    background-color: darkgray;
+}
+
+#newPostSubmit:hover{
+    background-color: rgb(255, 136, 0);
+}
+
+.footer{
     background-color: orange;
     text-align: center;
+    position: bottom; 
+    margin-top: 200px;
+    bottom: 0;      
+    left: 0;   
+    width: 100%;  
+    display: flow-root;
+    box-sizing: border-box;
+    padding-bottom: 30px;
 }
+
+#newCommunity{
+    text-align: left;
+    margin-left: 5%;
+    flex: 5;
+}
+
+.CreatePostField{
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.CreatePostInput{
+    width: 600px;
+    border-radius: 10px;
+    border-color: black;
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 30px;
+    text-align: left;
+    font-size: 18px;
+    vertical-align: top; 
+    resize: vertical;
+}
+
+#CommuDescriptionInput{
+    height: 150px;
+}
+
+#newCommunitySubmit{
+    border-radius: 20px;
+    background-color: orange;
+    font-size: 18px;
+    margin-top: 10px;
+    height: 35px;
+}
+
+#newCommunitySubmit:hover{
+    background-color: rgb(255, 136, 0);
+}
+
+.newCommentInput{
+    width: 600px;
+    border-radius: 10px;
+    border-color: black;
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 30px;
+    text-align: left;
+    font-size: 18px;
+    vertical-align: top; 
+    resize: vertical;
+}
+
+#newCommentSubmit{
+    border-radius: 20px;
+    background-color: orange;
+    font-size: 18px;
+    margin-top: 10px;
+    height: 35px;
+}
+
+#newCommentSubmit:hover{
+    background-color: rgb(255, 136, 0);
+}
+
+#cancelComment{
+    border-radius: 20px;
+    background-color: lightgray;
+    font-size: 18px;
+    padding: 3px 10px 3px 10px;
+    margin-left: 100px;
+    height: 35px;
+    text-decoration: none;
+}
+
+#cancelComment:hover{
+    background-color: darkgray;
+}
+
+.communitesElement:hover{
+    text-decoration: underline;
+
+}
+.visiblePost h2:hover{
+    text-decoration: underline;
+}
+

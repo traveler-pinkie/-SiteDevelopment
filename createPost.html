@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/index.css">
+  <script type="module" src="src/index.js"></script>
+  
+</head>
+
+<body>
+  <div id="header" class="header">
+    <a href="index.html" id="home">Phreddit</a>
+    <input id="searchbar" placeholder="Search Phreddit"></input>
+    <button id="search">search</button>
+    <a href="createPost.html" class="headeritem" >Create Post</a>  </div>
+  <hr>
+
+
+  <div id="flex_wrapper">
+    <div id="leftbox">
+      <a href="index.html"><div id="lefthome" class="leftboxitem">Home</div></a>
+      <hr> 
+      <div>
+        <ul id="Communities">Communities</ul>
+      </div>
+      <a href="createCommunity.html"><div id="newCommunityButton" class="leftboxitem">Create Community</div></a>
+      <div href="#" id="currentCommuTag" class="leftboxitem"> Current Communities</div>
+      
+      <ul id="communitiesList">
+        <li></li>
+      </ul>
+
+    </div>
+    <div id="midbox">
+      <div id="newPost">
+        <p class="CreateHeader" id="newPostSign">Create Post</p>
+        
+          <select name="Which Community" class="newPostSelect" id="newPostCommunity" required>
+            <option value="" selected>Please Select a Community</option>
+            <option value="Com1" class="newPostOption">Com1</option>
+            <option value="Com2" class="newPostOption">Com2</option>
+            <option value="Com3" class="newPostOption">Com3</option>
+          </select>
+      
+          <p class="newPostInstruct">Title: </p>
+          <input placeholder="Title of the Post" id="newPostTitle" class="newPostInput" type="text" required minlength="1" maxlength="100"></input>
+          
+          <p class="newPostInstruct" id="newPostflairSelect">Flair(optional): </p>
+          <select name="Select a Flair" class="newPostSelect">
+            <option value="" selected>Please select</option>
+            <option value="F1" class="newPostFlairOption">F1</option>
+            <option value="F2" class="newPostFlairOption">F2</option>
+            <option value="F2" class="newPostFlairOption">F3</option>
+          </select>
+          <p>
+              <input placeholder="Enter a Flair" id="newPostFlairEnter" class="newPostInput" type="text" maxlength="30"></input>
+          </p>
+          <p class="newPostInstruct">Body: </p>
+          <p>
+              <textarea placeholder="Start Writing..." id="newPostContent" class="newPostInput" type="text" required minlength="1"></textarea>
+          </p>
+          <p class="newPostInstruct">Username: </p>
+          <p>
+              <input placeholder="Enter Username" id="newPostUsername" class="newPostInput" type="text" required minlength="1"></input>
+      
+          </p>
+            <button type="submit" id="newPostSubmit">Submit Post</button>
+            <a id="cancelNewPost" href="./index.html">Cancle</a>
+            
+      
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    footer
+  </footer>
+
+
+  </div>
+  
+
+</body>
+
+</html>

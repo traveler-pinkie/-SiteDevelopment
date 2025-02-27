@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/index.css">
+  <script type="module" src="src/index.js"></script>
+</head>
+
+<body>
+  <div id="header" class="header">
+    <a href="index.html" id="home">Phreddit</a>
+    <input id="searchbar" placeholder="Search Phreddit"></input>
+    <button id="search">search</button>
+    <!-- <a href="createPost.html" class="headeritem" >Create Post</a> -->
+    <button class="headeritem" id="createPost">Create Post</button>
+  </div>
+  <hr>
+
+
+  <div id="flex_wrapper">
+    <div id="leftbox">
+      <a href="index.html"><div id="lefthome" class="leftboxitem">Home</div></a>
+      <hr> 
+      <div>
+        <ul id="Communities">Communities</ul>
+      </div>
+      <button id="newCommunityButton" class="leftboxitem">Create Community</button>
+      <div href="#" id="currentCommuTag" class="leftboxitem"> Current Communities</div>
+      
+      <ul id="communitiesList">
+        <li id="communitiesListItems"></li>
+      </ul>
+
+    </div>
+    <div id="midbox">
+        <div class="midboxHeader">
+            <div class="leftsideHeader">
+                <h2 id="headerLF">Community name</h2>
+                <div id="communityDescription">communityDescription</div>
+                <div id="communityCreatedTime">Created time</div>
+                <div id="communityMemberCount">Members</div>
+            </div>
+            <div class="rightsideHeader">
+                <div>
+                    <button href="#" id="newestSort">Newest</button>
+                    <button href="#" id="oldestSort">Oldest</button>
+                    <button href="#"id="activeSort">Active</button>
+                </div>
+            </div>
+        </div>
+      <hr>
+      <h3 id="postsTotal"></h3>
+        <section class="postContainer">
+            <div id="postTemplate" class="posts postOne">
+                <ul>
+                    <li id="communityName"></li>
+                    <li id="posterName"></li>
+                    <li id="postAge"></li>
+                </ul>
+                <h2 href="#" class="postOne"></h2>
+                    <p class="postOne"></p>
+                <p class="postOne"></p>
+                <div class="postsFooter">
+                    <p class="postOne"></p>
+                    <p class="postOne"></p>
+                </div>
+                <hr>
+            </div>
+        </section>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    footer
+  </footer>
+
+
+  </div>
+  
+
+</body>
+
+</html>

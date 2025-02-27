@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/index.css">
+  <script type="module" src="src/index.js"></script>
+  
+</head>
+
+<body>
+  <div id="header" class="header">
+    <a href="index.html" id="home">Phreddit</a>
+    <input id="searchbar" placeholder="Search Phreddit"></input>
+    <button id="search">search</button>
+    <a href="createPost.html" class="headeritem" >Create Post</a>
+  </div>
+  <hr>
+
+
+  <div id="flex_wrapper">
+    <div id="leftbox">
+        <a href="index.html"><div id="lefthome" class="leftboxitem">Home</div></a>
+        <hr> 
+        <div>
+            <ul id="Communities">Communities</ul>
+        </div>
+        <a href="createCommunity.html"><div id="newCommunityButton" class="leftboxitem">Create Community</div></a>
+        <div href="#" id="currentCommuTag" class="leftboxitem"> Current Communities</div>
+        
+        <ul id="communitiesList">
+            <li></li>
+        </ul>
+
+    </div>
+    <div id="midbox">
+        <div id="newCommunity">
+            <form>
+                <div class="CreateHeader">Create a New Community</div>
+                <div class="CreatePostField">Community name (required, max 100 characters)</div>
+                <input placeholder="Name of Community" id="" class="CreatePostInput" type="text" required minlength="1" maxlength="100"></input>
+                <div class="CreatePostField" >Community Description (required, max 500 characters)</div>
+                <textarea placeholder="Describe your community" id="CommuDescriptionInput" class="CreatePostInput" type="text" required minlength="1" maxlength="500"></textarea>
+                <div class="CreatePostField">Creater Username (required max ?? chars??)</div>
+                <input placeholder="Username" id="" class="CreatePostInput" type="text" required minlength="1" maxlength="100"></input>
+            </form>
+            <button id="newCommunitySubmit">Engender Community</button>
+        </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    footer
+  </footer>
+
+
+  </div>
+  
+
+</body>
+
+</html>
